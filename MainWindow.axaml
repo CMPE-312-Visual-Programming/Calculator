@@ -1,0 +1,86 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="350"
+        Width="200" Height="350"
+        x:Class="Calculator.MainWindow"
+        Background="#121314"
+        Title="Calculator">
+    <DockPanel> 
+        <StackPanel DockPanel.Dock="Top" Background="DarkGray" Height="50" Margin="5">
+            <TextBlock x:Name="Calculation" Text="0" HorizontalAlignment="Right" Margin="2"/>
+            <TextBlock x:Name="Result" Text="0" HorizontalAlignment="Right" Margin="2"/>
+        </StackPanel>
+        <Grid DockPanel.Dock="Bottom" RowDefinitions="*,*" ColumnDefinitions="3*,*"  VerticalAlignment="Top">
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
+                <Button 
+                    Content="←" Width="90" Height="40" Background="Gray"  Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Click="OnBackspaceClick"/>
+                <Button 
+                    Content="C" Margin="2" Width="45" Background="Gray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Click="OnClearClick"/>
+            </StackPanel>
+            <Grid Grid.Column="0" Grid.Row="1" RowDefinitions="*,*,*,*" ColumnDefinitions="*,*,*">
+                <Button 
+                    Grid.Row="0" Grid.Column="0" Content="7" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Click="OnNumberButtonClick"
+                    />
+                <Button 
+                    Grid.Row="0" Grid.Column="1" Content="8" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Click="OnNumberButtonClick"/>
+                <Button 
+                    Grid.Row="0" Grid.Column="2" Content="9" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Click="OnNumberButtonClick"
+                    />
+                <Button 
+                    Grid.Row="1" Grid.Column="0" Content="4" Background="Gray"  Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Click="OnNumberButtonClick"/>
+                <Button 
+                    Grid.Row="1" Grid.Column="1" Content="5" Background="Gray"  Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Click="OnNumberButtonClick"/>
+                <Button 
+                    Grid.Row="1" Grid.Column="2" Content="6" Background="Gray"  Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Click="OnNumberButtonClick"/>
+                <Button 
+                    Grid.Row="2" Grid.Column="0" Content="1" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Click="OnNumberButtonClick"/>
+                <Button 
+                    Grid.Row="2" Grid.Column="1" Content="2" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Click="OnNumberButtonClick"/>
+                <Button 
+                    Grid.Row="2" Grid.Column="2" Content="3" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Click="OnNumberButtonClick"/>
+                <Button 
+                    Grid.Row="3" Grid.Column="1" Content="0" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Click="OnNumberButtonClick"/>
+                <Button 
+                    Grid.Row="3" Grid.Column="2" Content="." Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Click="OnNumberButtonClick"/>
+            </Grid>
+            <StackPanel Grid.Column="1" Grid.Row="1">
+                <Button 
+                    Content="/" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Click="OnCalculateClick"
+                    />
+                <Button 
+                    Content="*" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Click="OnCalculateClick"
+                    />
+                <Button 
+                    Content="+" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Click="OnCalculateClick"
+                    />
+                <Button 
+                    Content="-" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Click="OnCalculateClick"
+                    />
+                <Button 
+                    Content="=" Background="Gray"  Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Click="OnCalculateClick"
+                    />
+            </StackPanel>
+        </Grid>
+
+    </DockPanel>
+</Window>
