@@ -6,6 +6,7 @@
         <entry key="App.axaml" value="Calculator.csproj" />
         <entry key="GlobalStyle.axaml" value="Calculator.csproj" />
         <entry key="MainWindow.axaml" value="Calculator.csproj" />
+        <entry key="Styles/GlobalStyle.axaml" value="Calculator.csproj" />
       </map>
     </option>
   </component>

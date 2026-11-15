@@ -6,5 +6,7 @@
 
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="Styles/GlobalStyle.axaml"/> 
+        <!-- If you want to use the style in every page/ every window you need to include in here otherwise put this part into window.axaml file inside <Window.Styles></Window.Styles> --> 
     </Application.Styles>
 </Application>

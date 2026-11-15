@@ -5,55 +5,9 @@
         mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="350"
         x:Class="Calculator.MainWindow"
         Title="Calculator">
-    <!-- Rather than inline styling (writing each item's style one by one), we define a page/view styling in below -->
-    <Window.Styles>
-        <Style Selector="Window">
-            <Setter Property="Background" Value="#121314"/>
-            <Setter Property="Width" Value="200"/>
-            <Setter Property="Height" Value="350"/>
-        </Style>
-        <Style Selector="TextBlock">
-            <Setter Property="Margin" Value="2"/>
-            <Setter Property="HorizontalAlignment" Value="Right"/>
-        </Style>
-        <Style Selector="StackPanel.display">
-            <Setter Property="Background" Value="DarkGray"/>
-            <Setter Property="Height" Value="50"/>
-            <Setter Property="Margin" Value="5"></Setter>
-        </Style>
-        <Style Selector="StackPanel.clear">
-            <Setter Property="Orientation" Value="Horizontal"/>
-        </Style>
-        <Style Selector="Grid.buttonLayout">
-            <Setter Property="VerticalAlignment" Value="Top"/>
-        </Style>
-        <Style Selector="Button">
-            <Setter Property="Background" Value="Gray"/>
-            <Setter Property="Margin" Value="2"/>
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="VerticalAlignment" Value="Stretch"/>
-        </Style>
-        <Style Selector="Button:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="#121314"/>
-            <Setter Property="Foreground" Value="White"/>
-        </Style>
-        <Style Selector="Button.backButton">
-            <Setter Property="Width" Value="90"/>
-            <Setter Property="Height" Value="40"/>
-        </Style>
-        <Style Selector="Button.clearButton">
-            <Setter Property="Width" Value="45"/>
-            <Setter Property="Background" Value="IndianRed"/>
-            <Setter Property="BorderThickness" Value="3"/>
-            <Setter Property="BorderBrush" Value="DarkRed"/>
-        </Style>
-        <Style Selector="Button.clearButton:pointerover /template/ ContentPresenter">
-            <Setter Property="Background" Value="OrangeRed"/>
-            <Setter Property="Foreground" Value="White"/>
-        </Style>
-    </Window.Styles>
-    <!-- end styling here -->
-    
+    <!-- <Window.Styles> -->
+    <!--     <StyleInclude Source="Styles/GlobalStyle.axaml"/> -->
+    <!-- </Window.Styles> -->
     <DockPanel> 
         <StackPanel DockPanel.Dock="Top" Classes="display">
             <TextBlock x:Name="Calculation" Text="0" />
