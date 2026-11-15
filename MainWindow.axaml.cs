@@ -14,7 +14,8 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         _calculatorLogic = new CalculatorLogic();
-        UpdateDisplay();
+        _calculatorLogic.OnDisplayChanged += DisplayChanged;
+        DisplayChanged();
     }
 
     private void OnNumberButtonClick(object? sender, RoutedEventArgs e)
@@ -22,7 +23,6 @@ public partial class MainWindow : Window
         if (sender is Button button && Int32.TryParse(button.Content?.ToString(), out int digit))
         {
             _calculatorLogic.AddDigit(digit); 
-            UpdateDisplay();
         }
     }
 
@@ -33,22 +33,19 @@ public partial class MainWindow : Window
             _calculatorLogic.Calculate();
         else
             _calculatorLogic.SetOperator(op);
-        UpdateDisplay();
     }
     
     public void OnBackspaceClick(object? sender, RoutedEventArgs e)
     {
         _calculatorLogic.Backspace();
-        UpdateDisplay();
     }
     
     public void OnClearClick(object? sender, RoutedEventArgs e)
     {
         _calculatorLogic.Clear();
-        UpdateDisplay();
     }
     
-    private void UpdateDisplay()
+    private void DisplayChanged()
     {
         Calculation.Text = _calculatorLogic.PrimaryDisplay;
         Result.Text = _calculatorLogic.SecondaryDisplay;

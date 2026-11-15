@@ -12,6 +12,8 @@ public class CalculatorLogic
     private bool _hasTypedCurrentNumber = false;
     private bool _shouldResetOnNextNumber = false;
     
+    public event Action? OnDisplayChanged;
+    
     public string PrimaryDisplay => GenerateDisplayString();
     public string SecondaryDisplay { get; private set; } = "";
 
@@ -22,6 +24,8 @@ public class CalculatorLogic
 
         _numbers[_currentIndex] = _numbers[_currentIndex] * 10 + digit;
         _hasTypedCurrentNumber = true;
+
+        NotifyDisplayChanged();
     }
 
     public void SetOperator(string op)
@@ -61,6 +65,7 @@ public class CalculatorLogic
                 _hasTypedCurrentNumber = false;
             }
         }
+        NotifyDisplayChanged();
     }
 
     public void Calculate()
@@ -75,6 +80,7 @@ public class CalculatorLogic
             _currentIndex = 0;
             _hasTypedCurrentNumber = false;
             _shouldResetOnNextNumber = true;
+            NotifyDisplayChanged();
         }
     }
 
@@ -96,6 +102,7 @@ public class CalculatorLogic
         }
 
         _numbers[_currentIndex] = Math.Truncate(_numbers[_currentIndex] / 10);
+        NotifyDisplayChanged();
     }
 
     public void Clear()
@@ -106,6 +113,7 @@ public class CalculatorLogic
         _hasTypedCurrentNumber = false;
         _shouldResetOnNextNumber = false;
         SecondaryDisplay = "";
+        NotifyDisplayChanged();
     }
     
     private double CalculateSingle(double a, string op, double b)
@@ -130,6 +138,11 @@ public class CalculatorLogic
             if (_numbers.Count > 1) text += _numbers[1].ToString();
         }
         return text;
+    }
+    
+    private void NotifyDisplayChanged()
+    {
+        OnDisplayChanged?.Invoke(); // Abone varsa (null değilse) tetikle
     }
 }
 
