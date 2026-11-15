@@ -3,84 +3,87 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="350"
-        Width="200" Height="350"
         x:Class="Calculator.MainWindow"
-        Background="#121314"
         Title="Calculator">
+    <!-- Rather than inline styling (writing each item's style one by one), we define a page/view styling in below -->
+    <Window.Styles>
+        <Style Selector="Window">
+            <Setter Property="Background" Value="#121314"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="350"/>
+        </Style>
+        <Style Selector="TextBlock">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+        </Style>
+        <Style Selector="StackPanel.display">
+            <Setter Property="Background" Value="DarkGray"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="5"></Setter>
+        </Style>
+        <Style Selector="StackPanel.clear">
+            <Setter Property="Orientation" Value="Horizontal"/>
+        </Style>
+        <Style Selector="Grid.buttonLayout">
+            <Setter Property="VerticalAlignment" Value="Top"/>
+        </Style>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="Gray"/>
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+        </Style>
+        <Style Selector="Button:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#121314"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        <Style Selector="Button.backButton">
+            <Setter Property="Width" Value="90"/>
+            <Setter Property="Height" Value="40"/>
+        </Style>
+        <Style Selector="Button.clearButton">
+            <Setter Property="Width" Value="45"/>
+            <Setter Property="Background" Value="IndianRed"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="BorderBrush" Value="DarkRed"/>
+        </Style>
+        <Style Selector="Button.clearButton:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="OrangeRed"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+    </Window.Styles>
+    <!-- end styling here -->
+    
     <DockPanel> 
-        <StackPanel DockPanel.Dock="Top" Background="DarkGray" Height="50" Margin="5">
-            <TextBlock x:Name="Calculation" Text="0" HorizontalAlignment="Right" Margin="2"/>
-            <TextBlock x:Name="Result" Text="0" HorizontalAlignment="Right" Margin="2"/>
+        <StackPanel DockPanel.Dock="Top" Classes="display">
+            <TextBlock x:Name="Calculation" Text="0" />
+            <TextBlock x:Name="Result" Text="0" />
         </StackPanel>
-        <Grid DockPanel.Dock="Bottom" RowDefinitions="*,*" ColumnDefinitions="3*,*"  VerticalAlignment="Top">
-            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0">
-                <Button 
-                    Content="←" Width="90" Height="40" Background="Gray"  Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    Click="OnBackspaceClick"/>
-                <Button 
-                    Content="C" Margin="2" Width="45" Background="Gray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    Click="OnClearClick"/>
+        <Grid DockPanel.Dock="Bottom" RowDefinitions="*,*" ColumnDefinitions="3*,*"  Classes="buttonLayout">
+            <StackPanel Grid.Row="0" Grid.Column="0" Classes="clear">
+                <Button Content="←" Classes="backButton" Click="OnBackspaceClick"/>
+                <Button Content="C" Classes="clearButton" Click="OnClearClick"/>
             </StackPanel>
             <Grid Grid.Column="0" Grid.Row="1" RowDefinitions="*,*,*,*" ColumnDefinitions="*,*,*">
-                <Button 
-                    Grid.Row="0" Grid.Column="0" Content="7" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    Click="OnNumberButtonClick"
-                    />
-                <Button 
-                    Grid.Row="0" Grid.Column="1" Content="8" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    Click="OnNumberButtonClick"/>
-                <Button 
-                    Grid.Row="0" Grid.Column="2" Content="9" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    Click="OnNumberButtonClick"
-                    />
-                <Button 
-                    Grid.Row="1" Grid.Column="0" Content="4" Background="Gray"  Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    Click="OnNumberButtonClick"/>
-                <Button 
-                    Grid.Row="1" Grid.Column="1" Content="5" Background="Gray"  Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    Click="OnNumberButtonClick"/>
-                <Button 
-                    Grid.Row="1" Grid.Column="2" Content="6" Background="Gray"  Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    Click="OnNumberButtonClick"/>
-                <Button 
-                    Grid.Row="2" Grid.Column="0" Content="1" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    Click="OnNumberButtonClick"/>
-                <Button 
-                    Grid.Row="2" Grid.Column="1" Content="2" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    Click="OnNumberButtonClick"/>
-                <Button 
-                    Grid.Row="2" Grid.Column="2" Content="3" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    Click="OnNumberButtonClick"/>
-                <Button 
-                    Grid.Row="3" Grid.Column="1" Content="0" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    Click="OnNumberButtonClick"/>
-                <Button 
-                    Grid.Row="3" Grid.Column="2" Content="." Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    Click="OnNumberButtonClick"/>
+                <Button Grid.Row="0" Grid.Column="0" Content="7" Click="OnNumberButtonClick"/>
+                <Button Grid.Row="0" Grid.Column="1" Content="8" Click="OnNumberButtonClick"/>
+                <Button Grid.Row="0" Grid.Column="2" Content="9" Click="OnNumberButtonClick"/>
+                <Button Grid.Row="1" Grid.Column="0" Content="4" Click="OnNumberButtonClick"/>
+                <Button Grid.Row="1" Grid.Column="1" Content="5" Click="OnNumberButtonClick"/>
+                <Button Grid.Row="1" Grid.Column="2" Content="6" Click="OnNumberButtonClick"/>
+                <Button Grid.Row="2" Grid.Column="0" Content="1" Click="OnNumberButtonClick"/>
+                <Button Grid.Row="2" Grid.Column="1" Content="2" Click="OnNumberButtonClick"/>
+                <Button Grid.Row="2" Grid.Column="2" Content="3" Click="OnNumberButtonClick"/>
+                <Button Grid.Row="3" Grid.Column="1" Content="0" Click="OnNumberButtonClick"/>
+                <Button Grid.Row="3" Grid.Column="2" Content="." Click="OnNumberButtonClick"/>
             </Grid>
             <StackPanel Grid.Column="1" Grid.Row="1">
-                <Button 
-                    Content="/" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    Click="OnCalculateClick"
-                    />
-                <Button 
-                    Content="*" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    Click="OnCalculateClick"
-                    />
-                <Button 
-                    Content="+" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    Click="OnCalculateClick"
-                    />
-                <Button 
-                    Content="-" Background="Gray" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    Click="OnCalculateClick"
-                    />
-                <Button 
-                    Content="=" Background="Gray"  Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    Click="OnCalculateClick"
-                    />
+                <Button Content="/" Click="OnCalculateClick"/>
+                <Button Content="*" Click="OnCalculateClick"/>
+                <Button Content="+" Click="OnCalculateClick"/>
+                <Button Content="-" Click="OnCalculateClick"/>
+                <Button Content="=" Click="OnCalculateClick"/>
             </StackPanel>
         </Grid>
-
     </DockPanel>
 </Window>
