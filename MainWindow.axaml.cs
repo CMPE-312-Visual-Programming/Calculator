@@ -50,4 +50,9 @@ public partial class MainWindow : Window
         Calculation.Text = _calculatorLogic.PrimaryDisplay;
         Result.Text = _calculatorLogic.SecondaryDisplay;
     }
+    
+    ~MainWindow()
+    {
+        _calculatorLogic.OnDisplayChanged -= DisplayChanged;
+    }
 }
